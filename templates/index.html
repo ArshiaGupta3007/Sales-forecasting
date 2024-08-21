@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sales Prediction</h1>
+            <p>Predict the sales for the third month based on the rate and sales data from the first two months.</p>
+        </header>
+
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label for="rate">Rate:</label>
+                <select id="rate" name="rate">
+                    <option value="zero">Zero</option>
+                    <option value="one">One</option>
+                    <option value="two">Two</option>
+                    <option value="three">Three</option>
+                    <option value="four">Four</option>
+                    <option value="five">Five</option>
+                    <option value="six">Six</option>
+                    <option value="seven">Seven</option>
+                    <option value="eight">Eight</option>
+                    <option value="nine">Nine</option>
+                    <option value="ten">Ten</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sales_1st_month">Sales for 1st Month:</label>
+                <input type="number" id="sales_1st_month" name="sales_1st_month" required>
+            </div>
+            <div class="form-group">
+                <label for="sales_2nd_month">Sales for 2nd Month:</label>
+                <input type="number" id="sales_2nd_month" name="sales_2nd_month" required>
+            </div>
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        {% if prediction is not none %}
+        <div class="result">
+            <h2>Predicted Sales for 3rd Month:</h2>
+            <p>${{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
